@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Olivier Giroux — Portfolio professionnel</title>
+<meta name="description" content="Portfolio professionnel d'Olivier Giroux, étudiant en génie du bâtiment à l'Université de Sherbrooke.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,500;8..60,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #f7f6f2;
+    --surface: #ffffff;
+    --ink: #1c2421;
+    --ink-soft: #4a5550;
+    --muted: #7a847f;
+    --line: #e2e0d8;
+    --accent: #1f5e4f;
+    --accent-soft: #e4efe9;
+    --warm: #c8743a;
+    --radius: 14px;
+    --maxw: 920px;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; scroll-padding-top: 72px; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+    font-size: 17px;
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+  h1, h2, h3 { font-family: "Source Serif 4", Georgia, serif; font-weight: 600; line-height: 1.25; }
+
+  /* Navigation */
+  nav {
+    position: sticky; top: 0; z-index: 10;
+    background: rgba(247, 246, 242, 0.92);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--line);
+  }
+  .nav-inner {
+    max-width: var(--maxw); margin: 0 auto; padding: 0 20px;
+    display: flex; align-items: center; justify-content: space-between; height: 60px; gap: 16px;
+  }
+  .brand { font-family: "Source Serif 4", Georgia, serif; font-weight: 600; font-size: 18px; color: var(--ink); text-decoration: none; white-space: nowrap; }
+  .nav-links { display: flex; gap: 4px; overflow-x: auto; scrollbar-width: none; }
+  .nav-links::-webkit-scrollbar { display: none; }
+  .nav-links a {
+    color: var(--ink-soft); text-decoration: none; font-size: 14px; font-weight: 500;
+    padding: 6px 12px; border-radius: 999px; white-space: nowrap; transition: background .15s, color .15s;
+  }
+  .nav-links a:hover, .nav-links a.active { background: var(--accent-soft); color: var(--accent); }
+
+  /* Hero */
+  header.hero {
+    max-width: var(--maxw); margin: 0 auto; padding: 72px 20px 48px;
+    display: grid; grid-template-columns: 160px 1fr; gap: 40px; align-items: center;
+  }
+  .portrait {
+    width: 160px; height: 160px; border-radius: 50%;
+    background: linear-gradient(135deg, var(--accent), #2f7d6a);
+    color: #fff; display: flex; align-items: center; justify-content: center;
+    font-family: "Source Serif 4", Georgia, serif; font-size: 56px; font-weight: 600;
+    overflow: hidden; box-shadow: 0 10px 30px rgba(31, 94, 79, 0.18);
+  }
+  .portrait img { width: 100%; height: 100%; object-fit: cover; }
+  .eyebrow { color: var(--warm); font-size: 13px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; margin: 0 0 8px; }
+  .hero h1 { font-size: clamp(36px, 6vw, 52px); margin: 0 0 10px; }
+  .hero p.lead { margin: 0; color: var(--ink-soft); font-size: 18px; }
+
+  /* Sections */
+  main { max-width: var(--maxw); margin: 0 auto; padding: 0 20px 80px; }
+  section { padding: 48px 0; border-top: 1px solid var(--line); }
+  .section-label { color: var(--accent); font-size: 13px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; margin: 0 0 6px; }
+  section > h2 { font-size: clamp(28px, 4vw, 36px); margin: 0 0 28px; }
+  .prose p { margin: 0 0 1.1em; color: var(--ink); }
+  .prose p:last-child { margin-bottom: 0; }
+
+  /* Competency cards */
+  .cards { display: grid; gap: 24px; }
+  .card {
+    background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius);
+    padding: 32px; box-shadow: 0 1px 2px rgba(0,0,0,.03);
+  }
+  .card-head { display: flex; align-items: center; gap: 14px; margin-bottom: 18px; }
+  .badge {
+    flex: none; background: var(--accent-soft); color: var(--accent);
+    font-weight: 600; font-size: 15px; padding: 6px 12px; border-radius: 8px; font-variant-numeric: tabular-nums;
+  }
+  .card h3 { font-size: 22px; margin: 0; }
+  .card p { margin: 0 0 1em; }
+  .card ul { margin: 0 0 1em; padding-left: 0; list-style: none; }
+  .card li { position: relative; padding-left: 22px; margin-bottom: .6em; }
+  .card li::before {
+    content: ""; position: absolute; left: 4px; top: .72em;
+    width: 7px; height: 7px; border-radius: 50%; background: var(--accent);
+  }
+  .card p:last-child { margin-bottom: 0; }
+
+  /* Plan */
+  .plan h3 { font-size: 22px; margin: 36px 0 16px; }
+  .plan h3:first-of-type { margin-top: 28px; }
+  .table-wrap { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; }
+  table { width: 100%; border-collapse: collapse; font-size: 15.5px; }
+  th, td { text-align: left; padding: 14px 18px; vertical-align: top; }
+  thead th { background: var(--accent); color: #fff; font-weight: 600; font-size: 14px; letter-spacing: .02em; }
+  tbody tr + tr td { border-top: 1px solid var(--line); }
+  td.year { font-weight: 600; color: var(--accent); white-space: nowrap; font-variant-numeric: tabular-nums; }
+  td.gap { color: var(--ink-soft); }
+  .plan ul { padding-left: 0; list-style: none; margin: 0; display: grid; gap: 12px; }
+  .plan ul li {
+    background: var(--surface); border: 1px solid var(--line); border-left: 4px solid var(--warm);
+    border-radius: 10px; padding: 14px 18px;
+  }
+
+  footer { text-align: center; color: var(--muted); font-size: 14px; padding: 32px 20px 48px; border-top: 1px solid var(--line); }
+
+  @media (max-width: 680px) {
+    body { font-size: 16px; }
+    .nav-inner { height: auto; padding-top: 10px; padding-bottom: 10px; flex-direction: column; align-items: flex-start; gap: 6px; }
+    .nav-links { width: 100%; margin: 0 -12px; }
+    header.hero { grid-template-columns: 1fr; gap: 24px; padding: 40px 20px 32px; text-align: left; }
+    .portrait { width: 112px; height: 112px; font-size: 40px; }
+    .card { padding: 22px; }
+    .card-head { align-items: flex-start; flex-direction: column; gap: 10px; }
+    thead { display: none; }
+    table, tbody, tr, td { display: block; width: 100%; }
+    tbody tr { padding: 14px 16px; }
+    tbody tr + tr { border-top: 1px solid var(--line); }
+    tbody tr + tr td { border-top: none; }
+    td { padding: 2px 0; }
+    td.gap { font-size: 14px; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a class="brand" href="#identite">Olivier Giroux</a>
+    <div class="nav-links">
+      <a href="#identite">Identité</a>
+      <a href="#techniques">Compétences techniques</a>
+      <a href="#transversales">Compétences transversales</a>
+      <a href="#plan">Plan de développement</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero">
+  <!-- Pour ajouter une photo : remplacer « OG » par <img src="images/portrait.jpg" alt="Olivier Giroux"> -->
+  <div class="portrait" aria-hidden="true">OG</div>
+  <div>
+    <p class="eyebrow">Portfolio professionnel</p>
+    <h1>Olivier Giroux</h1>
+    <p class="lead">Génie du bâtiment — Université de Sherbrooke</p>
+  </div>
+</header>
+
+<main>
+
+  <!-- ===================== IDENTITÉ PROFESSIONNELLE ===================== -->
+  <section id="identite">
+    <p class="section-label">Qui je suis</p>
+    <h2>Identité professionnelle</h2>
+    <div class="prose">
+      <p>Mon désir de devenir ingénieur remonte à aussi loin que je me souvienne. Dans un album de finissants du primaire où on nous demandait ce qu'on voulait faire plus tard, j'avais déjà écrit « ingénieur ». C'est au cégep, en sciences de la nature, que mon intérêt s'est précisé concrètement : la physique m'a happé, et c'est tout naturellement que je me suis dirigé vers le génie du bâtiment à l'Université de Sherbrooke, avec en tête l'idée de devenir concepteur de structures.</p>
+      <p>Plus j'avançais dans mon programme, plus je réalisais que ce n'était pas la structure elle-même qui me passionnait. La découverte de la mécanique des fluides et des échanges thermiques dans les systèmes mécaniques du bâtiment a changé ma trajectoire : j'ai voulu comprendre comment un bâtiment respire, consomme et peut consommer moins. Mon intérêt s'est ainsi réorienté vers la mécanique du bâtiment et l'efficacité énergétique.</p>
+      <p>Je suis quelqu'un qui a besoin d'aller au fond des choses. Je ne me contente pas de suivre une procédure sans en comprendre le pourquoi, et je vérifie mes décisions plusieurs fois avant de les soumettre. Je ne suis pas un quelqu’un qui travaille bien seul dans son coin : j'ai besoin d'interagir, de bouger, d'échanger avec une équipe. Mon stage chez Akonovia me l'a rappelé de façon concrète. Il y a eu une période où plusieurs mandats se sont accumulés en même temps, et j'ai vécu un stress réel à l'idée de ne pas livrer à temps. Je ne vous cacherai pas que c'était une période difficile. Mais plutôt que de m'isoler avec cette inquiétude, j'en ai parlé ouvertement à mon superviseur. Le plan qu'on a bâti ensemble a fait disparaître la majorité de mes craintes. C'est une leçon que je porte encore aujourd'hui : la rigueur individuelle ne suffit pas sans la capacité à communiquer honnêtement sur ses limites.</p>
+      <p>Mon échange à l'ULB, en Belgique, a élargi ma compréhension de la profession d'une autre façon. J'y ai constaté à quel point le contexte géographique. L'accès à l'énergie, les matériaux disponibles et le climat transforme fondamentalement les choix de conception d'un bâtiment. Ce constat a renforcé ma conviction que l'ingénieur en bâtiment ne peut pas appliquer des solutions génériques : il doit comprendre le contexte avant de proposer une solution.</p>
+      <p>Je suis conscient que la construction demeure l'une des industries les plus polluantes, et je crois que l'efficacité énergétique n'est plus une option dans le contexte climatique, économique et politique actuel. C'est une nécessité centrale de la pratique. C'est cette conviction, combinée à l'intérêt pour la simulation énergétique développé lors de mon projet de fin de baccalauréat, qui guide mes objectifs de carrière à court terme. Je cherche un poste qui combine simulation et efficacité énergétique, dans un environnement où je peux à la fois identifier un problème sur papier et aller le constater sur le terrain.</p>
+    </div>
+  </section>
+
+  <!-- ===================== COMPÉTENCES TECHNIQUES ===================== -->
+  <section id="techniques">
+    <p class="section-label">Référentiel OIQ</p>
+    <h2>Compétences techniques</h2>
+    <div class="cards">
+
+      <article class="card">
+        <div class="card-head"><span class="badge">1.1</span><h3>Règlements, codes et normes</h3></div>
+        <p>Dans le cadre d’un mandat de conception en plomberie dans mon stage chez Akonovia, je devais concevoir le réseau de drainage sanitaire et de ventilation de la tuyauterie du bâtiment. N’ayant jamais réalisé ce type de conception auparavant, je ne savais pas comment aborder le dimensionnement et la disposition des conduites tout en respectant les exigences règlementaires applicable.</p>
+        <p>Pour y arriver :</p>
+        <ul>
+          <li>J’ai consulté le code national de la plomberie avec les modifications du Québec afin d’identifier les exigences applicables au drainage sanitaire et à la ventilation des tuyaux.</li>
+          <li>J’ai utilisé les annexes du code qui présentent des exemples d’installation conformes, pour orienter la disposition du réseau.</li>
+          <li>J’ai complété ma compréhension avec les guides de bonne pratique de la CMMTQ, qui traduisent les exigences du code en recommandations de conception concrètes.</li>
+          <li>A partir de ces sources, j’ai réalisé les calculs de dimensionnement (facteur d’évacuation, diamètre, pente, ventilation) nécessaire à ma conception.</li>
+        </ul>
+        <p>Cette démarche m’a permis de fournir à mon superviseur des plans conforme adaptés aux enjeux spécifiques du projet.</p>
+      </article>
+
+      <article class="card">
+        <div class="card-head"><span class="badge">1.4</span><h3>Application de la théorie</h3></div>
+        <p>Dans le cadre de mon projet de fin de baccalauréat pour Groupe Lapalme, je devais déterminer le débit d'air frais requis pour le bâtiment ainsi que valider les charges de chauffage de l'enveloppe générées par ma simulation énergétique.</p>
+        <ul>
+          <li>J'ai appliqué la théorie présentée dans la norme ASHRAE 62.1, combinée aux exigences de la CNESST, pour calculer le besoin en air frais du bâtiment selon son usage et son occupation.</li>
+          <li>Plutôt que d'accepter directement les charges de chauffage de l'enveloppe générées par le logiciel de simulation, j'ai effectué une vérification manuelle indépendante à l'aide des équations présentées dans mon cours de mécanique CVCA.</li>
+        </ul>
+        <p>Cette vérification manuelle a confirmé que les hypothèses posées dans mon logiciel de simulation étaient justes, sans qu'aucune correction ne soit nécessaire. Cette démarche m'a permis de m'assurer de la fiabilité de mes résultats avant de les intégrer au rapport final du projet.</p>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- ===================== COMPÉTENCES TRANSVERSALES ===================== -->
+  <section id="transversales">
+    <p class="section-label">Référentiel OIQ</p>
+    <h2>Compétences transversales</h2>
+    <div class="cards">
+
+      <article class="card">
+        <div class="card-head"><span class="badge">5.2</span><h3>Reconnaître les limites de ses compétences</h3></div>
+        <p>Lors de mon stage en conception mécanique chez Akonovia (hiver 2025), plusieurs mandats se sont accumulés en même temps : des calculs de charges pour plusieurs projets, la production de plans pour un autre projet et un rapport de simulation énergétique dont l'échéance approchait rapidement. Comme stagiaire, je n'arrivais plus à juger seul si je pouvais tout livrer à temps avec la qualité attendue, et cette incertitude me causait un stress important.</p>
+        <ul>
+          <li>J'ai reconnu que la situation dépassait ce que je pouvais évaluer seul avec mon expérience. Plutôt que de tout absorber en silence, j'ai choisi d'en parler.</li>
+          <li>J'ai demandé une rencontre à mon superviseur pour lui exposer ouvertement ma charge de travail et mes inquiétudes face aux délais.</li>
+          <li>J'ai clarifié avec lui les attentes réelles. L'échéance du rapport de simulation était seulement indicative et servait à rappeler qu'il restait à faire, ce qu'on ne m'avait pas précisé.</li>
+          <li>Nous avons établi un ordre de priorité : comme stagiaire en conception mécanique, je devais faire passer les calculs de charges et les plans en premier, et je pouvais réaliser le rapport dans mes temps libres.</li>
+        </ul>
+        <p>Cette discussion a fait disparaître la majorité de mes craintes et m'a permis de me concentrer sur mes mandats de conception. J'en retiens qu'une partie de mon stress venait d'attentes mal comprises. Reconnaître tôt ses limites et poser les bonnes questions fait partie de la rigueur professionnelle.</p>
+      </article>
+
+      <article class="card">
+        <div class="card-head"><span class="badge">3.4</span><h3>Aspects financiers et budgétaires</h3></div>
+        <p>Lors de mon stage de coordonnateur de projets et surveillant de chantier à l'Université Bishop's (automne 2025), j'ai participé au suivi financier d'un projet d'agrandissement de résidence étudiante d'environ 19 M$. À titre de donneur d'ouvrage, l'université devait s'assurer que les sommes versées à l'entrepreneur et aux professionnels correspondaient aux travaux et aux services réellement rendus.</p>
+        <ul>
+          <li>J'ai vérifié les demandes de paiement de l'entrepreneur en comparant l'avancement facturé à l'avancement réel observé lors de la surveillance de chantier et à l'échéancier des travaux.</li>
+          <li>J'ai fait le suivi des honoraires des professionnels pour m'assurer que leur facturation respectait les mandats prévus à leurs contrats.</li>
+          <li>J'ai suivi les demandes de changement et les instructions supplémentaires pour en mesurer l'effet sur le budget du projet.</li>
+          <li>J'ai fait le suivi des dénonciations de contrat et des quittances.</li>
+        </ul>
+        <p>Ce suivi a permis à l'université d'avoir un portrait à jour de la situation budgétaire. J'ai compris concrètement comment le budget d'un projet de construction se gère au quotidien, à travers les contrats et la facturation.</p>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- ===================== PLAN DE DÉVELOPPEMENT ===================== -->
+  <section id="plan" class="plan">
+    <p class="section-label">2027 – 2030</p>
+    <h2>Plan de développement professionnel (2027-2030)</h2>
+    <div class="prose">
+      <p>Mon plan vise à combler les trois lacunes identifiées dans mon annexe autocritique (gestion de projet, audit et gestion de l'énergie, analyse technico-financière) et à me tenir à jour dans le domaine de l'efficacité énergétique des bâtiments.</p>
+    </div>
+
+    <h3>Indicateur 1 — Combler mes lacunes</h3>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>Échéance</th><th>Activité</th><th>Lacune visée</th></tr>
+        </thead>
+        <tbody>
+          <tr><td class="year">2027</td><td>Formation <em>Gestion et audit de l'énergie</em> (ÉTS Formation, PER-512, 14 h)</td><td class="gap">Audit et gestion de l'énergie</td></tr>
+          <tr><td class="year">2027</td><td>Formation sur le logiciel RETScreen (analyse de faisabilité et de rentabilité des mesures)</td><td class="gap">Analyse technico-financière</td></tr>
+          <tr><td class="year">2027-2028</td><td>Certification CAPM (PMI)</td><td class="gap">Gestion de projet</td></tr>
+          <tr><td class="year">2028</td><td>Formation et examen CEM, statut <em>Energy Manager in Training</em> (AEE)</td><td class="gap">Audit et gestion de l'énergie</td></tr>
+          <tr><td class="year">2028-2030</td><td>Maîtrise en gestion de l'ingénierie (Université de Sherbrooke, temps partiel) — incluant analyse financière et gestion de projet</td><td class="gap">Gestion de projet, analyse technico-financière</td></tr>
+          <tr><td class="year">2029</td><td>Certification CMVP — mesurage et vérification (AEE)</td><td class="gap">Audit et gestion de l'énergie</td></tr>
+          <tr><td class="year">2030</td><td>Certification CEM complète, une fois l'expérience requise acquise</td><td class="gap">Audit et gestion de l'énergie</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3>Indicateur 2 — Me tenir à jour</h3>
+    <ul>
+      <li>Adhérer à l'AQME et à ASHRAE (section de Montréal) et participer à leurs conférences et webinaires.</li>
+      <li>Assurer une veille des programmes de subvention en efficacité énergétique et en décarbonation (p. ex. Hydro-Québec Solutions efficaces, Énergir).</li>
+      <li>Respecter les exigences de formation continue de l'OIQ et suivre des formations ciblées selon l'évolution des codes et normes (p. ex. Code de construction du Québec, chapitre I.1 — Efficacité énergétique, normes ASHRAE).</li>
+      <li>Réaliser l'examen professionnel de l'OIQ afin d'obtenir mon permis d'ingénieur.</li>
+    </ul>
+  </section>
+
+</main>
+
+<footer>Olivier Giroux · Génie du bâtiment, Université de Sherbrooke</footer>
+
+<script>
+  // Surligne la section visible dans le menu
+  const links = document.querySelectorAll('.nav-links a');
+  const sections = [...links].map(a => document.querySelector(a.getAttribute('href')));
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        links.forEach(l => l.classList.toggle('active', l.getAttribute('href') === '#' + e.target.id));
+      }
+    });
+  }, { rootMargin: '-40% 0px -55% 0px' });
+  sections.forEach(s => s && obs.observe(s));
+</script>
+</body>
+</html>
